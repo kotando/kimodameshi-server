@@ -7,6 +7,9 @@ Things you may want to cover:
 
 * Ruby version
 
+ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-darwin17]
+Rails 5.1.6
+
 * System dependencies
 
 * Configuration
