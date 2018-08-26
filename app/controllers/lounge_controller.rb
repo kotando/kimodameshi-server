@@ -75,6 +75,7 @@ require "securerandom"
     image_url = File.join(Rails.root, '/public/temp/#{member_uuid}.png')
     File.open(image_url, 'wb') do |f|
         f.write(params["thumnail"])
+    end
     response.headers['Access-Control-Allow-Origin'] = '*'
     render :json =>   {
       "lounge_uuid": params["lounge_uuid"],
