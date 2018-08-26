@@ -65,20 +65,23 @@ require "securerandom"
       member.member_uuid = member_uuid
       member.group = params["group"]
       member.lounge_id = lounge_id
-      member.thumnail = params["thumnail"]
+      # member.thumnail = params["thumnail"]
       member.is_owner = false
       member.save
     else
       render :json =>  "the lounge is closed" ,status: 200 and return
     end
-    #thumnailをS3で用意できるように
+    #thumnailをS3で用意できるように -> 代替案としてサーバーのローカルに保存
+    image_url = File.join(Rails.root, '/public/temp/#{member_uuid}.png')
+    File.open(image_url, 'wb') do |f|
+        f.write(params["thumnail"])
     response.headers['Access-Control-Allow-Origin'] = '*'
     render :json =>   {
       "lounge_uuid": params["lounge_uuid"],
       "name": params["name"],
       "member_uuid": member_uuid,
       "group": params["group"],
-      "thumbnail": params["thumbnail"]
+      "thumbnail": image_url
     }, status: 200
 
   end
