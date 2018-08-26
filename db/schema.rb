@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180826013617) do
+ActiveRecord::Schema.define(version: 20180826113043) do
 
   create_table "lounges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "lounge_uuid"
@@ -27,13 +27,13 @@ ActiveRecord::Schema.define(version: 20180826013617) do
   create_table "members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "member_uuid"
     t.string "member_name"
-    t.bigint "lounge_id", null: false
+    t.string "lounge_uuid"
     t.string "group"
     t.binary "thumnail"
     t.boolean "is_owner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["lounge_id"], name: "index_members_on_lounge_id"
+    t.string "status"
   end
 
   create_table "prefs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -44,5 +44,4 @@ ActiveRecord::Schema.define(version: 20180826013617) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "members", "lounges"
 end
