@@ -1,6 +1,2 @@
-class LoungesController < ApplicationController
-  def create
-  end
-
-
+class Lounge < ApplicationRecord
 end
